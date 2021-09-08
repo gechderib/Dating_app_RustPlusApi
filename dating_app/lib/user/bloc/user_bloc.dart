@@ -16,12 +16,27 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       yield UserLoading();
       try {
         final users = await userRepository.getUser();
+        // final loginUsers = await userRepository.getLoginUser();
         print(users);
+        // yield LoginLoadSuccess(loginUsers);
         yield UserLoadSuccess(users);
         // print('tttttttttttttttttttttttttttttttt');
       } catch (_) {
         yield UserOperationFailure();
         // print('ffffffffffffffffffffffffffffffff');
+      }
+    }
+    if (event is UserLogin) {
+      try {
+        print('now ');
+
+        await userRepository.loginUser(event.login);
+        print('after');
+        final logins = await userRepository.getLoginUser();
+        yield LoginLoadSuccess(logins);
+      } catch (_) {
+        print('fail');
+        yield UserOperationFailure();
       }
     }
 
@@ -50,11 +65,35 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
     if (event is UserDelete) {
       try {
-        await userRepository.deleteUser(event.user.id);
+        // await userRepository.deleteUser(event.user.id);
         final users = await userRepository.getUser();
         yield UserLoadSuccess(users);
       } catch (_) {
         yield UserOperationFailure();
+      }
+    }
+    if (event is likeCreate) {
+      try {
+        await userRepository.createlike(event.Like);
+
+        print("object");
+        // print('ttttttttttttttttttttttttttttttttt');
+      } catch (_) {
+        yield UserOperationFailure();
+        // print('ffffffffffffffffffffffffffffffffff');
+      }
+    }
+
+    if (event is UserLoad) {
+      yield UserLoading();
+      try {
+        final users = await userRepository.getUser();
+
+        yield UserLoadSuccess(users);
+        // print('tttttttttttttttttttttttttttttttt');
+      } catch (_) {
+        yield UserOperationFailure();
+        // print('ffffffffffffffffffffffffffffffff');
       }
     }
   }
