@@ -38,6 +38,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         print('fail');
         yield UserOperationFailure();
       }
+      print('d');
     }
 
     if (event is UserCreate) {
