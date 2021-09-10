@@ -9,12 +9,14 @@ class UserState extends Equatable {
   @override
   List<Object> get props => [];
 }
+
 class likeState extends Equatable {
   const likeState();
 
   @override
   List<Object> get props => [];
 }
+
 class UserLoading extends UserState {}
 
 class UserLoadSuccess extends UserState {
@@ -34,9 +36,7 @@ class LoginLoadSuccess extends UserState {
   List<Object> get props => [logins];
 }
 
-
 class LoginLoading extends UserState {}
-
 
 class UserOperationFailure extends UserState {}
 
@@ -48,3 +48,5 @@ class likeLoadSuccess extends likeState {
   @override
   List<Object> get props => [Like];
 }
+
+class UserOperationFailure extends UserState {}

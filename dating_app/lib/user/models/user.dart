@@ -1,16 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class User {
-  User(
-    this.email,
-    this.password, {
-    this.id,
-    this.username,
-    this.name,
-    this.address,
-    this.age,
-    this.like
-  });
+  User(this.email, this.password,
+      {this.id, this.username, this.name, this.address, this.age, this.like});
 
   String? id;
   String? username;
@@ -44,8 +36,8 @@ class User {
       "username": username,
       "name": name,
       "address": address,
-      "age":age,
-      "like":like,
+      "age": age,
+      "like": like,
       "id": id,
     };
   }
