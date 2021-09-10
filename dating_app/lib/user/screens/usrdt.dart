@@ -2,10 +2,67 @@ import 'package:dating_app/user/bloc/user_bloc.dart';
 import 'package:dating_app/user/bloc/user_event.dart';
 import 'package:dating_app/user/models/user.dart';
 import 'package:dating_app/user/screens/addApdate.dart';
+import 'package:dating_app/user/screens/user_list.dart';
 import 'package:dating_app/user/screens/user_route.dart';
 import 'package:dating_app/user/screens/usrchoice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// class UsrDetail extends StatelessWidget {
+//   static const routeName = 'usrDetail';
+//   final User user;
+
+//   UsrDetail({required this.user});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('${this.user.name}'),
+//       ),
+//       body: Card(
+//         child: Column(
+//           children: [
+//             Container(
+//               child: Column(
+//                 children: [
+//                   Text('Full Name: ${this.user.name}'),
+//                   Text('User Name: ${this.user.username}'),
+//                   Text('Age: ${user.age}'),
+//                   Text('Address: ${user.address}'),
+//                   Text('${this.user.email}'),
+//                   Text('${this.user.like}'),
+//                   Text('${this.user.password}'),
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     children: [
+//                       IconButton(
+//                         icon: Icon(Icons.edit),
+// onPressed: () => Navigator.of(context).pushNamed(
+//   AddUpdateUser.routeName,
+//   arguments: UserArgument(user: this.user, edit: true),
+//                         ),
+//                       ),
+//                       IconButton(
+//                           icon: Icon(Icons.delete),
+//                           onPressed: () {
+// context.read<UserBloc>().add(UserDelete(this.user));
+// Navigator.of(context).pushNamedAndRemoveUntil(
+//     UserList.routeName, (route) => false);
+//                           }),
+//                     ],
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+import 'package:flutter/material.dart';
 
 class UsrDetail extends StatelessWidget {
   static const routeName = 'usrDetail';
@@ -148,57 +205,56 @@ class UsrDetail extends StatelessWidget {
                                             user: this.user, edit: true));
                                   }),
                               IconButton(
-                                icon: Icon(
-                                  Icons.delete,
-                                  color: Colors.pinkAccent,
-                                ),
-                                onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: new Text("Delete!!",
-                                            style: TextStyle(
-                                              color: Colors.red,
-                                            )),
-                                        content: new Text(
-                                            "Are you sure about it ?.."),
-                                        actions: <Widget>[
-                                          new TextButton(
-                                            style: TextButton.styleFrom(
-                                                backgroundColor: Colors.red),
-                                            child: new Text("Yes",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                )),
-                                            onPressed: () {
-                                              context
-                                                  .read<UserBloc>()
-                                                  .add(UserDelete(this.user));
-                                              // Navigator.of(context)
-                                              //     .pushNamedAndRemoveUntil(
-                                              //         UserList.routeName,
-                                              //         (route) => false);
-                                            },
-                                          ),
-                                          new TextButton(
-                                            style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.pinkAccent),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                            child: Text('No',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                )),
-                                          )
-                                        ],
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
+                                  icon: Icon(
+                                    Icons.delete,
+                                    color: Colors.pinkAccent,
+                                  ),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: new Text("Delete!!",
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                              )),
+                                          content: new Text(
+                                              "Are you sure about it ?.."),
+                                          actions: <Widget>[
+                                            new TextButton(
+                                              style: TextButton.styleFrom(
+                                                  backgroundColor: Colors.red),
+                                              child: new Text("Yes",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  )),
+                                              onPressed: () {
+                                                context
+                                                    .read<UserBloc>()
+                                                    .add(UserDelete(this.user));
+                                                Navigator.of(context)
+                                                    .pushNamedAndRemoveUntil(
+                                                        UserList.routeName,
+                                                        (route) => false);
+                                              },
+                                            ),
+                                            new TextButton(
+                                              style: TextButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.pinkAccent),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('No',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  )),
+                                            )
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }),
                             ],
                           ),
                         ],

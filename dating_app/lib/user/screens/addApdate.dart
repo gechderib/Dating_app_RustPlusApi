@@ -1,18 +1,45 @@
 import 'package:dating_app/user/bloc/user_bloc.dart';
 import 'package:dating_app/user/bloc/user_event.dart';
 import 'package:dating_app/user/models/user.dart';
-import 'package:dating_app/user/screens/home.dart';
 import 'package:dating_app/user/screens/user_list.dart';
 import 'package:dating_app/user/screens/user_route.dart';
 import 'package:dating_app/user/widget/bottons.dart';
-import 'package:dating_app/user/widget/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// class AddUpdate extends StatelessWidget {
+//   static const routeName = '/updateBasicInfo';
+//   final UserRepository userRepository = UserRepository(
+//       userDataProvider: UserDataProvider(httpClient: http.Client()));
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return BasicInfoAddUpdate(userRepository: userRepository);
+//   }
+// }
+
+// class BasicInfoAddUpdate extends StatelessWidget {
+//   final UserRepository userRepository;
+//   BasicInfoAddUpdate({required this.userRepository});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return RepositoryProvider.value(
+//       value: this.userRepository,
+//       child: BlocProvider(
+//         create: (context) =>
+//             UserBloc(userRepository: userRepository)..add(UserLoad()),
+//         child:
+//             AddUpdateUser(args: UserArgument(user: User('', ''), edit: true)),
+//       ),
+//     );
+//   }
+// }
 
 class AddUpdateUser extends StatefulWidget {
   static const routeName = '/addUpdate';
   final UserArgument args;
-  
+
   AddUpdateUser({required this.args});
   @override
   _AddUpdateUserState createState() => _AddUpdateUserState();
@@ -27,11 +54,10 @@ class _AddUpdateUserState extends State<AddUpdateUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pink,
         title: Text("Basic Info"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(8.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -45,16 +71,12 @@ class _AddUpdateUserState extends State<AddUpdateUser> {
                     }
                     return null;
                   },
-                  decoration: InputFieldStyle.copyWith(
-                      labelText: 'Full Name', hintText: 'Your name'),
+                  decoration: InputDecoration(labelText: 'user name'),
                   onSaved: (value) {
                     setState(() {
                       this._user["name"] = value;
                     });
                   }),
-              SizedBox(
-                height: 10,
-              ),
               TextFormField(
                   initialValue: widget.args.edit ? widget.args.user.name : '',
                   validator: (value) {
@@ -63,14 +85,10 @@ class _AddUpdateUserState extends State<AddUpdateUser> {
                     }
                     return null;
                   },
-                  decoration: InputFieldStyle.copyWith(
-                      labelText: 'Username', hintText: 'your username'),
+                  decoration: InputDecoration(labelText: 'name'),
                   onSaved: (value) {
                     this._user["username"] = value;
                   }),
-              SizedBox(
-                height: 10,
-              ),
               TextFormField(
                   initialValue:
                       widget.args.edit ? widget.args.user.address : '',
@@ -80,63 +98,51 @@ class _AddUpdateUserState extends State<AddUpdateUser> {
                     }
                     return null;
                   },
-                  decoration: InputFieldStyle.copyWith(
-                      hintText: 'your address', labelText: 'Address'),
+                  decoration: InputDecoration(labelText: 'addrsss'),
                   onSaved: (value) {
                     setState(() {
                       this._user["address"] = value;
                     });
                   }),
-              SizedBox(
-                height: 10,
-              ),
               TextFormField(
                   initialValue: widget.args.edit ? widget.args.user.email : '',
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter your email';
+                      return 'Please enter user description';
                     }
                     return null;
                   },
-                  decoration: InputFieldStyle.copyWith(
-                      labelText: 'Email', hintText: 'your email'),
+                  decoration: InputDecoration(labelText: 'descriptio'),
                   onSaved: (value) {
                     setState(() {
                       this._user["email"] = value;
                     });
                   }),
-              SizedBox(
-                height: 10,
-              ),
               TextFormField(
                   initialValue:
                       widget.args.edit ? widget.args.user.password : '',
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter your password';
+                      return 'Please enter user description';
                     }
                     return null;
                   },
-                  decoration: InputFieldStyle.copyWith(
-                      hintText: 'your password', labelText: 'Password'),
+                  decoration: InputDecoration(labelText: 'passwod'),
                   onSaved: (value) {
                     setState(() {
                       this._user["password"] = value;
                     });
                   }),
-              SizedBox(
-                height: 10,
-              ),
               TextFormField(
-                  initialValue: widget.args.edit ? widget.args.user.age : '',
+                  initialValue:
+                      widget.args.edit ? widget.args.user.age : '',
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter user age';
                     }
                     return null;
                   },
-                  decoration: InputFieldStyle.copyWith(
-                      labelText: 'Age', hintText: 'your age age'),
+                  decoration: InputDecoration(labelText: 'age'),
                   onSaved: (value) {
                     setState(() {
                       this._user["age"] = value;
@@ -163,10 +169,7 @@ class _AddUpdateUserState extends State<AddUpdateUser> {
                                   age: this._user['age'],
                                   like: 'null',
                                   image: 'image',
-                                  choiceAge: '',
-                                  sex: '',
-                                  color: '',
-                                  religion: ''),
+                                  choiceAge: '',sex: '',color: '',religion: ''),
                             )
                           : UserCreate(
                               User(
@@ -179,26 +182,8 @@ class _AddUpdateUserState extends State<AddUpdateUser> {
                             );
 
                       BlocProvider.of<UserBloc>(context).add(event);
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: new Text("Update!!"),
-                            content:
-                                new Text("You success fully updated your info"),
-                            actions: <Widget>[
-                              new TextButton(
-                                child: new Text("back to home"),
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, HomePage.routeName);
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          UserList.routeName, (route) => false);
                     }
                   },
                   displaytext: Text('SAVE'),
