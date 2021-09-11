@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dating_app/user/models/loginModel.dart';
 import 'package:dating_app/user/models/models.dart';
 import 'package:dating_app/user/models/user.dart';
 import 'package:http/http.dart' as http;
@@ -11,10 +12,9 @@ class UserDataProvider {
 
   Future<User> createUser(User user) async {
     final response = await httpClient.post(
-      '$_baseUrl/api/users',
+      Uri.parse('$_baseUrl/api/users'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
       },
       body: jsonEncode(<String, dynamic>{
         'username': user.username,
@@ -45,9 +45,9 @@ class UserDataProvider {
     }
   }
 
-  Future<void> deleteUser(String id) async {
+  Future<void> deleteUser(String email) async {
     final http.Response response = await httpClient.delete(
-      Uri.parse('$_baseUrl/api/users/$id'),
+      Uri.parse('$_baseUrl/api/users/$email'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -59,8 +59,10 @@ class UserDataProvider {
   }
 
   Future<void> updateUser(User user) async {
+    print(user.age);
+    print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
     final http.Response response = await httpClient.put(
-      Uri.parse('$_baseUrl/api/users/${user.id}'),
+      Uri.parse('$_baseUrl/api/users/${user.email}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -69,12 +71,70 @@ class UserDataProvider {
         'name': user.name,
         'email': user.email,
         'password': user.password,
-        'address': user.address
+        'address': user.address,
+        'age': user.age,
+        'like': user.like,
+        'image': user.image,
+        'choiceAge': user.choiceAge,
+        'sex': user.sex,
+        'color': user.color,
+        'religion': user.religion
       }),
     );
-
+    print('ggggg ${response.body}');
     if (response.statusCode != 204) {
       throw Exception('Failed to update user.');
+    }
+  }
+
+  Future<dynamic> loginUser(Login login) async {
+    final response = await httpClient.post(
+      Uri.parse('$_baseUrl/api/userlogin'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'email': login.email,
+        'password': login.password,
+      }),
+    );
+    print(response);
+    if (response.statusCode == 201) {
+      return Login.fromJson(jsonDecode(response.body));
+    } else if (response.body == 'Wrong email or password') {
+      return 'Wrong email or password';
+    } else {
+      throw Exception('Failed to create login.');
+    }
+  }
+
+  Future<like> createlike(like Like) async {
+    final response = await httpClient.post(
+      Uri.parse(
+        '$_baseUrl/api/like',
+      ),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(
+          <String, dynamic>{'likedBy': Like.likedBy, 'liked': Like.liked}),
+    );
+    print(response);
+    if (response.statusCode == 201) {
+      return like.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to create User.');
+    }
+  }
+
+  Future<List<Login>> getLoginUsers() async {
+    final response = await httpClient.get(Uri.parse('$_baseUrl/api/userlogin'));
+
+    if (response.statusCode == 200) {
+      final loginUser = jsonDecode(response.body) as List;
+      return loginUser.map((loginUser) => Login.fromJson(loginUser)).toList();
+    } else {
+      throw Exception('Failed to login user');
     }
   }
 }
