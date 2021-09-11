@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:dating_app/user/models/loginModel.dart';
 import 'package:dating_app/user/models/user.dart';
 import 'package:dating_app/user/screens/user_register.dart';
@@ -10,61 +9,6 @@ import 'package:http/http.dart' as http;
 final _baseUrl = 'http://127.0.0.1:5000';
 
 class ClientAuthDataProvider {
-  // static Future<User> register(User user) async {
-  //   User getCurrentUser = User("", "");
-  //   try {
-  //     final httpresponse = await http.post(
-  //       '$_baseUrl/api/users',
-  //       body: user.tojson(),
-  //     );
-  //     if (httpresponse.statusCode == 201) {
-  //       var incommingvalue = jsonDecode(httpresponse.body);
-  //       getCurrentUser = User(
-  //         incommingvalue['email'],
-  //         incommingvalue['password'],
-  //         username: incommingvalue['username'],
-  //         name: incommingvalue['name'],
-  //         address: incommingvalue['address'],
-  //       );
-  //     }
-
-  //     print("passed dataprovider");
-  //     print(httpresponse.headers);
-  //     print(httpresponse.body);
-  //     print(httpresponse.statusCode);
-  //   } catch (e) {
-  //     print(e.toString());
-  //     print('fdsf');
-  //   }
-
-  //   return getCurrentUser;
-  // }
-
-// Login DataProvider
-
-  // static Future<Map<String, dynamic>> login(LoginModel loginModel) async {
-  //   var finalvalue;
-  //   try {
-  //     final httpresponse = await http.post(Uri.parse('$_baseUrl/api/userlogin'),
-  //         body: loginModel.tojson());
-
-  //     if (httpresponse.statusCode == 200) {
-  //       print('2022222');
-  //       finalvalue = jsonDecode(httpresponse.body);
-  //       print(finalvalue);
-  //     } else if (httpresponse.statusCode == 401) {
-  //       finalvalue = jsonDecode(httpresponse.body);
-  //       print(finalvalue);
-  //     }
-  //   } catch (e) {
-  //     print('llllllllllllllllllllllll');
-  //     print(e.toString());
-  //   }
-
-  //   return finalvalue;
-  // }
-
-// DeleteUser DataProvider
 
   static Future<String> deleteaccount(User user, String id) async {
     var result = "";
@@ -95,18 +39,6 @@ class ClientAuthDataProvider {
     return result;
   }
 
-  // Future<void> deleteUser(User user, String id) async {
-  //   final http.Response response = await http.delete(
-  //     Uri.parse('$_baseUrl/api/users/$id'),
-  //     headers: <String, String>{
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //   );
-
-  //   if (response.statusCode != 204) {
-  //     throw Exception('Failed to delete User.');
-  //   }
-  // }
 
   static Future<User> register(User user) async {
     final response = await http.post(

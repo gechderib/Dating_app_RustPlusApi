@@ -37,21 +37,6 @@ class _UserChoicAddUpdateState extends State<UserChoicAddUpdate> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // TextFormField(
-              //     initialValue:
-              //         widget.args.edit ? widget.args.user.choiceAge : '',
-              //     validator: (value) {
-              //       if (value!.isEmpty) {
-              //         return 'Please enter choice age';
-              //       }
-              //       return null;
-              //     },
-              //     decoration: InputDecoration(labelText: 'choice age'),
-              //     onSaved: (value) {
-              //       setState(() {
-              //         this._user["choiceAge"] = value;
-              //       });
-              //     }),
               Text('Preferance age range', style: TextStyle(color: Colors.pink,fontSize: 12),),
               RangeSlider(
                 values: _currentRangeValues,
@@ -148,12 +133,12 @@ class _UserChoicAddUpdateState extends State<UserChoicAddUpdate> {
                                     style: TextStyle(
                                       color: Colors.red,
                                     )),
-                                content: new Text("Are you sure about it ?.."),
+                                content:  Text("Are you sure about it ?.."),
                                 actions: <Widget>[
-                                  new TextButton(
+                                   TextButton(
                                     style: TextButton.styleFrom(
                                         backgroundColor: Colors.red),
-                                    child: new Text("Yes",
+                                    child:  Text("Yes",
                                         style: TextStyle(
                                           color: Colors.white,
                                         )),
@@ -177,11 +162,11 @@ class _UserChoicAddUpdateState extends State<UserChoicAddUpdate> {
                                           ),
                                         ),
                                       );
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  super.widget));
+                                      // Navigator.pushReplacement(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (BuildContext context) =>
+                                      //             super.widget));
                                     },
                                   ),
                                   new TextButton(

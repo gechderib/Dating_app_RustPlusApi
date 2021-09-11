@@ -1,20 +1,9 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:dating_app/user/bloc/user_event.dart';
 import 'package:dating_app/user/models/user.dart';
 import 'package:dating_app/user/screens/addApdate.dart';
 import 'package:dating_app/user/screens/user_detail.dart';
-import 'package:dating_app/user/screens/user_login.dart';
 import 'package:dating_app/user/screens/user_route.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:dating_app/main.dart';
 
 // void main() {
 //   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -51,7 +40,6 @@ void main() {
     final userFinder = find.byElementType(User);
     expect(userFinder, findsOneWidget);
 
-    tester.enterText(, text)
   });
 
 

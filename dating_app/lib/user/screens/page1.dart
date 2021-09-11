@@ -1,9 +1,7 @@
-import 'package:dating_app/user/models/user.dart';
 import 'package:dating_app/user/screens/user_login.dart';
 import 'package:dating_app/user/screens/user_register.dart';
 import 'package:dating_app/user/widget/bottons.dart';
 import 'package:flutter/material.dart';
-import 'screens.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class PageOne extends StatelessWidget { 

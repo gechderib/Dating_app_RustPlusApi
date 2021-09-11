@@ -68,10 +68,8 @@ class list_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: users.length,
-        //itemBuilder: (_, idx) =>
         itemBuilder: (_, idx) {
           return Card(
-              // In many cases, the key isn't mandatory
               key: UniqueKey(),
               child: Padding(
                 padding: EdgeInsets.all(10),
@@ -132,74 +130,6 @@ class list_widget extends StatelessWidget {
         });
   }
 }
-
-// class TabBar extends StatelessWidget {
-//   const TabBar({
-//     Key key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       children: [
-//         Column(
-//           children: [
-//             Container(
-//               child: Center(
-//                 child: Text("2"),
-//               ),
-//               height: 20,
-//               width: 20,
-//               decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.circular(25),
-//                   color: Colors.yellow),
-//             ),
-//             TextButton(
-//               onPressed: () {},
-//               child: Text("Matches"),
-//             )
-//           ],
-//         ),
-//         Column(
-//           children: [
-//             Text(""),
-//             TextButton(
-//                 onPressed: () {
-//                   typee = "i_like";
-//                 },
-//                 child: Text("I Liked"))
-//           ],
-//         ),
-//         Column(
-//           children: [
-//             Text(""),
-//             TextButton(onPressed: () {}, child: Text("Liked Me"))
-//           ],
-//         ),
-//         Column(
-//           children: [
-//             Container(
-//               child: Center(
-//                 child: Text("1"),
-//               ),
-//               height: 20,
-//               width: 20,
-//               decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.circular(25),
-//                   color: Colors.yellow),
-//             ),
-//             TextButton(
-//               onPressed: () {},
-//               child: Text("Admires"),
-//             )
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }
-
 class ffg extends StatelessWidget {
   const ffg({Key? key}) : super(key: key);
 

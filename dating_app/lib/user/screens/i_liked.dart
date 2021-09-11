@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dating_app/user/bloc/user_event.dart';
 import 'package:dating_app/user/bloc/user_state.dart';
 import 'package:dating_app/user/bloc/user_bloc.dart';
@@ -23,7 +22,6 @@ class iliked extends StatelessWidget {
   List<User> userdata = [];
   static const routeName = '/iliked';
 
-  // final http.Client httpClient;
 
   @override
   Widget build(BuildContext context) {

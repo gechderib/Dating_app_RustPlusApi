@@ -1,4 +1,3 @@
-import 'package:dating_app/user/models/models.dart';
 import 'package:dating_app/user/models/user.dart';
 import 'package:dating_app/user/screens/addApdate.dart';
 import 'package:dating_app/user/screens/home.dart';
@@ -9,7 +8,6 @@ import 'package:dating_app/user/screens/page1.dart';
 import 'package:dating_app/user/screens/setting.dart';
 import 'package:dating_app/user/screens/suggestion.dart';
 import 'package:dating_app/user/screens/user_detail.dart';
-import 'package:dating_app/user/screens/user_list.dart';
 import 'package:dating_app/user/screens/user_login.dart';
 import 'package:dating_app/user/screens/user_register.dart';
 import 'package:dating_app/user/screens/usrchoice.dart';
@@ -39,9 +37,6 @@ class DatingAppRoute {
       User user = settings.arguments as User;
       return MaterialPageRoute(builder: (context) => UsrDetail(user: user));
     }
-    // if (settings.name == UserList.routeName) {
-    //   return MaterialPageRoute(builder: (context) => UserList());
-    // }
     if (settings.name == UserDetail.routeName) {
       User user = settings.arguments as User;
       return MaterialPageRoute(builder: (context) => UserDetail(user));
@@ -75,11 +70,6 @@ class DatingAppRoute {
     if (settings.name == iliked.routeName) {
       return MaterialPageRoute(builder: (context) => iliked());
     }
-    // if (settings.name == UserDetail.routeName) {
-
-    //   return MaterialPageRoute(
-    //       builder: (context) => UserDetail(settings.arguments));
-    // }
     if (settings.name == Suggetion.routeName) {
       return MaterialPageRoute(builder: (context) => Suggetion());
     }

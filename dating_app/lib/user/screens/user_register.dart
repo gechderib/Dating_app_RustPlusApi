@@ -38,7 +38,6 @@ class _RegisterState extends State<Register> {
   final userAgeCont = TextEditingController();
   final userLikeCont = TextEditingController();
 
-
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -162,41 +161,6 @@ class _RegisterState extends State<Register> {
                         textEditingController: userAgeCont,
                         icondata: Icon(Icons.ac_unit),
                       ),
-                      
-                      // Container(
-                      //     margin: EdgeInsets.only(right: 100),
-                      //     child: Row(children: [
-                      //       Expanded(
-                      //         child: Container(
-                      //           margin: EdgeInsets.only(left: 50),
-                      //           child: Text(
-                      //             "Role",
-                      //             style: TextStyle(color: Colors.greenAccent),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       DropdownButton<String>(
-                      //         value: roleDropDownValue,
-                      //         icon: const Icon(Icons.keyboard_arrow_down),
-                      //         iconSize: 24,
-                      //         style: const TextStyle(color: Colors.pinkAccent),
-                      //         onChanged: (String? newValue) {
-                      //           setState(() {
-                      //             roleDropDownValue = newValue!;
-                      //           });
-                      //         },
-                      //         items: <String>[
-                      //           'User',
-                      //           'Representative'
-                      //         ].map<DropdownMenuItem<String>>((String value) {
-                      //           return DropdownMenuItem<String>(
-                      //             value: value,
-                      //             child: Text(value),
-                      //           );
-                      //         }).toList(),
-                      //       ),
-                      //     ])),
-
                       BlocConsumer<RegisterBloc, RegisterState>(
                         listener: (_, state) {
                           if (state is Registered) {

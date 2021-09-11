@@ -2,78 +2,9 @@ import 'package:dating_app/user/bloc/user_bloc.dart';
 import 'package:dating_app/user/bloc/user_event.dart';
 import 'package:dating_app/user/models/loginModel.dart';
 import 'package:dating_app/user/models/user.dart';
-import 'package:dating_app/user/screens/addApdate.dart';
-import 'package:dating_app/user/screens/user_list.dart';
-import 'package:dating_app/user/screens/user_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-// class UserDetail extends StatelessWidget {
-//   static const routeName = 'userDetail';
-//   final User user;
-
-//   UserDetail({required this.user});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('${this.user.name}'),
-//         actions: [
-//           IconButton(
-//             icon: Icon(Icons.edit),
-//             onPressed: () => Navigator.of(context).pushNamed(
-//               AddUpdateUser.routeName,
-//               arguments: UserArgument(user: this.user, edit: true),
-//             ),
-//           ),
-//           SizedBox(
-//             width: 32,
-//           ),
-//           IconButton(
-//             icon: Icon(Icons.delete),
-//             onPressed: () {
-//               BlocProvider.of<UserBloc>(context).add(UserDelete(this.user));
-//               Navigator.of(context).pushNamedAndRemoveUntil(
-//                   UserList.routeName, (route) => false);
-//             },
-//           ),
-//         ],
-//       ),
-//       body: Card(
-//         child: Column(
-//           children: [
-//             ListTile(
-//               title: Text('usrname: ${this.user.username}'),
-//               subtitle: Text('full nama: ${this.user.name}'),
-//             ),
-//             Text(
-//               'Details',
-//               style: TextStyle(
-//                 fontSize: 18,
-//                 fontWeight: FontWeight.bold,
-//               ),
-//             ),
-//             SizedBox(
-//               height: 10,
-//             ),
-//             Text('${this.user.email}'),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-import 'package:dating_app/user/bloc/user_bloc.dart';
-import 'package:dating_app/user/bloc/user_event.dart';
-import 'package:dating_app/user/bloc/user_state.dart';
-import 'package:dating_app/user/models/user.dart';
 import 'package:dating_app/user/screens/home.dart';
-import 'package:dating_app/user/screens/user_login.dart';
-import 'package:dating_app/user/screens/user_route.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserDetail extends StatelessWidget {
@@ -90,7 +21,6 @@ class UserDetail extends StatelessWidget {
 
     print(name);
     return Scaffold(
-      // backgroundColor: Colors.white70,
       appBar: AppBar(),
       body: ListView(
         children: [

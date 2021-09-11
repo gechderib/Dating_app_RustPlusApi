@@ -35,13 +35,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield Logedin(logoutuser);
     }
 
-    // if (event is DeleteUserEvent) {
-    //   try {
-    //     String response =
-    //         await AuthRepository.DeleteUserRepo(event.user, event.user.email);
-    //     print(response);
-    //   } catch (e) {}
-    // }
   }
 }
 

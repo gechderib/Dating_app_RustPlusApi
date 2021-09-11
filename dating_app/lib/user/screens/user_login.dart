@@ -5,7 +5,6 @@ import 'package:dating_app/user/models/loginModel.dart';
 import 'package:dating_app/user/models/user.dart';
 import 'package:dating_app/user/screens/addApdate.dart';
 import 'package:dating_app/user/screens/home.dart';
-import 'package:dating_app/user/screens/nn.dart';
 import 'package:dating_app/user/screens/user_route.dart';
 import 'package:dating_app/user/widget/bottons.dart';
 import 'package:dating_app/user/widget/textfield.dart';
@@ -30,20 +29,8 @@ class LoginPage extends StatelessWidget {
       if (state is Logedin) {
         emailCont.text = "";
         passwordCont.text = "";
-        // var currentuser =
-        //     state.loggedinUserinfo.tojson();
-        // String name = currentuser['name'];
-
-        // if (role == "Representative") {
-        //   Navigator.pushNamed(context, '/repmainscreen');
-        // } else if (role == "User") {
-
-        // BlocProvider.of<HolyPlaceBloc>(context)
-        //     .add(LoadingHolyPlacesEvent());
         Navigator.pushNamed(context, HomePage.routeName);
-        // } else if (role == "Admin") {
-        //   Navigator.pushNamed(context, '/adminpage');
-        // }
+
 
       }
     }, builder: (context, state) {
@@ -159,30 +146,6 @@ class LoginPage extends StatelessWidget {
                             );
                           },
                         ),
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pushNamed(
-                            AddUpdateUser.routeName,
-                            arguments: UserArgument(
-                                user: User('email', 'password',
-                                    username: 'username',
-                                    name: 'name',
-                                    address: 'address'),
-                                edit: true),
-                          ),
-                          child: Text('press me'),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, HomePage.routeName);
-                          },
-                          child: Text('home'),
-                        ),
-                        TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, HomePage.routeName);
-                            },
-                            child: Text('jjjj'))
-                      
                       ],
                     ),
                   ),

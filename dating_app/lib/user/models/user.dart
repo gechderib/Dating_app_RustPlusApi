@@ -31,7 +31,6 @@ class User {
   String? religion;
   String? color;
   @override
-  // List<Object> get props => [id, username, name, email, password, address];
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -95,7 +94,6 @@ class Login extends Equatable {
   List<Object> get props => [id, email, password];
 
   factory Login.fromJson(Map<String, dynamic> json) {
-    print('dddddddddddddddddddppp');
     print(json);
     return Login(
         id: json['id'], email: json['email'], password: json['password']);

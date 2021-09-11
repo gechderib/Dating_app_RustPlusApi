@@ -5,14 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginModel {
   String? email;
   String? password;
-  // String? username;
-  // String? name;
-  // String? address;
+
 
   LoginModel(
     this.email,
     this.password,
-    /*this.address, this.name, this.username*/
   );
 
   factory LoginModel.fromJson(Map<String, dynamic> json) {
@@ -25,9 +22,6 @@ class LoginModel {
     return {
       "email": email,
       "password": password,
-      // "address": address,
-      // "name": name,
-      // "username": username
     };
   }
 
