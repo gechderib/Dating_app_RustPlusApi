@@ -98,21 +98,22 @@ class likeResource(Resource):
         # return users_schema.dump(likeing)
 
     @api.expect(like)
-    @api.response(201,"Successfuly created new user!")
     def post(self):
-        """This request creates new user"""
-        like = Like()
-        like.likedBy = request.json['likedBy']
-        like.liked = request.json['liked']
-        print(like)
-        print(like.liked)
-        db.session.add(like)
-        db.session.commit()
-        print(like.liked)
-        print(like)
-        print(request.json['liked'])
-
-        return like_schema.dump(like),201
+        like =Like() 
+        likedBy = request.json['likedBy'] 
+        liked = request.json['liked'] 
+        test=Like.query.filter_by(liked = liked,likedBy=likedBy).first() 
+        if test: 
+            db.session.delete(test) 
+            db.session.commit() 
+            return None, 204 
+            
+        else:  
+            like.likedBy = request.json['likedBy'] 
+            like.liked = request.json['liked'] 
+            db.session.add(like) 
+            db.session.commit() 
+            return like_schema.dump(like),201
 
 @api.route('/api/like/<string:emaill>')
 class LikeResource(Resource):
