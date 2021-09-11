@@ -41,7 +41,6 @@ class DatingAppRoute {
       User user = settings.arguments as User;
       return MaterialPageRoute(builder: (context) => UserDetail(user));
     }
-
     if (settings.name == About.routeName) {
       return MaterialPageRoute(builder: (context) => About());
     }

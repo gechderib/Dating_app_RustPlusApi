@@ -33,6 +33,19 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         yield UserOperationFailure();
       }
     }
+    if (event is UserLogin) {
+      try {
+        print('now ');
+
+        await userRepository.loginUser(event.login);
+        print('after');
+        final logins = await userRepository.getLoginUser();
+        yield LoginLoadSuccess(logins);
+      } catch (_) {
+        print('fail');
+        yield UserOperationFailure();
+      }
+    }
 
     if (event is UserCreate) {
       try {

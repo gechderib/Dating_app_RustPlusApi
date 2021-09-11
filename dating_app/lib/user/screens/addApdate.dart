@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AddUpdateUser extends StatefulWidget {
   static const routeName = '/addUpdate';
   final UserArgument args;
-
+  
   AddUpdateUser({required this.args});
   @override
   _AddUpdateUserState createState() => _AddUpdateUserState();
