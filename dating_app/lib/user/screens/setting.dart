@@ -6,6 +6,7 @@ import 'package:dating_app/user/screens/user_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget {
   static const routeName = '/settings';
@@ -78,8 +79,14 @@ class _SettingsState extends State<Settings> {
                   subtitle: 'Logout from page',
                   leading: Icon(Icons.logout),
                   onPressed: (BuildContext context) {
-                    Navigator.pushNamedAndRemoveUntil(context, LoginPage.routeName, (_) => false);
-                    // BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
+                    // addStringToSF();
+
+                    addStringToSF(email) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.remove('em');
+                      Navigator.pushNamed(context, LoginPage.routeName);
+                    }
                   },
                 ),
               ],
